@@ -21,9 +21,10 @@ const reducer = (state, { type, payload }) => {
           overwrite: false,
         };
       if (payload.digit === "0" && state.currentOperand === "0") return state;
-      if (payload.digit === "." && state.currentOperand.includes("."))
+      if (payload.digit === "." && state.currentOperand && state.currentOperand.includes("."))
         return state;
 
+        
       return {
         ...state,
         currentOperand: `${state.currentOperand || ""}${payload.digit}`,
